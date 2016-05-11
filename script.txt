@@ -1,0 +1,18 @@
+rm student.db fileAvail.bin fileIndex.bin ow1.txt ob1.txt of1.txt ow2.txt ob2.txt of2.txt assn_2
+gcc assn_2.c -o assn_2
+./assn_2 --worst-fit student.db < input-01.txt > ow1.txt
+./assn_2 --worst-fit student.db < input-02.txt > ow2.txt
+rm student.db fileAvail.bin fileIndex.bin
+./assn_2 --best-fit student.db < input-01.txt > ob1.txt
+./assn_2 --best-fit student.db < input-02.txt > ob2.txt
+rm student.db fileAvail.bin fileIndex.bin
+./assn_2 --first-fit student.db < input-01.txt > of1.txt
+./assn_2 --first-fit student.db < input-02.txt > of2.txt
+diff output-worst-fit-01.txt ow1.txt
+diff output-worst-fit-02.txt ow2.txt
+diff output-best-fit-01.txt ob1.txt
+diff output-best-fit-02.txt ob2.txt
+diff output-first-fit-01.txt of1.txt
+diff output-first-fit-02.txt of2.txt
+
+echo Done
